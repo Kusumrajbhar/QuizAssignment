@@ -1,0 +1,42 @@
+@import "../baseStyles/variable.scss" ;
+
+.outer-div {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8%;
+}
+.first-quiz {
+    width: 50%;
+    justify-content: center;
+    
+}
+.second-quiz {
+   width: 50%;
+   justify-content: center;
+}
+.Quize-heading {
+    background-color: $heading-color;
+    color: #ffffff;
+    padding: 2%;
+    font-size: 25px;
+    font-weight: bold;
+}
+.start-quize-one {
+  background-color: $button-background;
+  padding: 2%;
+  border: 1px solid ;
+  border-radius: 5px;
+}
+.select-operator {
+    font-size: 20px;
+    font-weight: bold;
+    padding: 2%;
+}
+.check-label{
+    font-size: 20px;
+    margin-right: 40px;
+    font-weight: bold;
+}
+.check-class{
+
+}

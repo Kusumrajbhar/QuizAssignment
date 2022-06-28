@@ -1,0 +1,23 @@
+.footer{
+    background-color: #011b0d;
+    display: flex;
+    justify-content: flex-end;
+    padding: 3% 0%;
+    bottom: 0;
+    position: fixed;
+    width: 100%;
+    margin: 2% 0%;
+}
+.score {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 35%;
+}
+.exit {
+    padding: 1% 2%;
+    margin: 0% 2%;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
