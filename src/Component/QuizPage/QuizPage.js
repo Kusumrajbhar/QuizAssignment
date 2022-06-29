@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Footer from '../Footer/Footer';
 import "./QuizPage.scss";
@@ -6,7 +6,7 @@ import "../Home/HomePage.scss"
 import {arrayContext } from "../../App";
 
 function QuizPage() {
-  const {state, dispatch} = useContext(arrayContext);
+  const {state, dispatch, scoreState, scoreDispatch} = useContext(arrayContext);
    const [firstDigit,setFirstDigit] = useState();
    const [secondDigit, setSecondDigit] = useState();
    const [operator, setOperator] = useState();
@@ -20,12 +20,11 @@ function QuizPage() {
    const firstValue = Math.floor( Math.random()*10);
    const secondValue = Math.floor( Math.random()*10);
    const selectedOperator =operatorArray[Math.floor( Math.random()*operatorArray.length)]; //operator[2]
-   
+
    useEffect(() => {
      setFirstDigit(firstValue);
      setSecondDigit(secondValue);
      setOperator(selectedOperator);
-     
      setInterval(nextQuestion, 20000);
      
     }, [questionNumber]);
@@ -44,22 +43,33 @@ function QuizPage() {
         break;
         case "*" : return first * second;
         break;
+        case "&&" : return first && second;
+        break;
+        case "||" : return first || second;
+        break;
+        case "%" : return first % second;
+        break;
+        case "^" : return first ^ second;
+        break;
+        case "<<" : return first << second;
+        break;
+        case ">>" : return first >> second;
+        break;
       } 
     }
 
+    
     function nextQuestion(){
     if(nextButton == "Next") {
          const result =Math.ceil(operatorFunction(firstDigit, secondDigit, operator));
-         result && userAnswer && (result == userAnswer) && setScore(score + 1)
-        
-        setUserAnswer('');
-        
-        setQuestionNumber(questionNumber + 1);
+         result && userAnswer && (result == userAnswer) &&  scoreDispatch({type: "score"});  
+         setUserAnswer('');
+         setQuestionNumber(questionNumber + 1);
     } else 
     if(nextButton == "Finish") {
       navigate("/Thank-You")
     }
-    }
+    };
     
     if(questionNumber == 20) {
       nextButton = "Finish";
@@ -88,9 +98,9 @@ function QuizPage() {
     <h2>{6 + 6}</h2> */}
     <button className='next-button' onClick={nextQuestion}>{nextButton}</button>
     </div>
-    <Footer score={score}/>
+    <Footer score={scoreState}/>
     </div>
   )
 }
 
-export default QuizPage
+export default memo(QuizPage);

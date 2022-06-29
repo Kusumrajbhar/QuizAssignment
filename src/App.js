@@ -12,12 +12,21 @@ switch(action.type) {
   default: return state;
 }
 }
+
+let initialScore = 0;
+const scoreReducer = (state, action) => {
+  switch(action.type) {
+    case "score" : return state + 1 ;
+    default: return state;
+  }
+}
 export const arrayContext = createContext();
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialState); 
+  const [scoreState, scoreDispatch] = useReducer(scoreReducer, initialScore); 
   return (
-    <arrayContext.Provider value={{state,dispatch}}>
+    <arrayContext.Provider value={{state,dispatch, scoreDispatch, scoreState}}>
     <Router>
     <div className="App">
       <Routes>

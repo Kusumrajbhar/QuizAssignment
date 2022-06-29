@@ -17,7 +17,7 @@ function HomePage() {
     disable = true;
   }
 
-  const operatorArray = [`+`, `-`, `/`, `*`];
+  const operatorArray = [`+`, `-`, `/`, `*`, `||`, `&&`, `%`, `^`,`<<`,`>>`];
 
   const selectValue = (e) => {
     dispatch({type:"add",payload: e.target.value});
