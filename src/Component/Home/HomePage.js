@@ -17,7 +17,7 @@ function HomePage() {
     disable = true;
   }
 
-  const operatorArray = [`+`, `-`, `/`, `*`, `||`, `&&`, `%`, `^`,`<<`,`>>`];
+  const operatorArray = [`+`, `-`, `/`, `*`, `||`, `&&`, `%`, `^`,`<<`,`>>`, `**`];
 
   const selectValue = (e) => {
     dispatch({type:"add",payload: e.target.value});
@@ -26,21 +26,22 @@ function HomePage() {
   return (
     <>
         <h2 className='Quize-heading'>Quizes</h2>
-        <div>
-       <div className='select-operator'>Select operators : </div> {operatorArray.map((item) => (
+        <div style={{animation: "dashboardBg 5s linear infinite", padding: "6% 0%" }}>
+       <div className='select-operator'>Select operators : </div> 
+       {operatorArray.map((item) => (
           <label className='check-label' key={item}> 
             {item}
           <input className='check-class' type="checkbox" value={item} onChange={selectValue}/>
           </label>
         ))
         }
-        </div>
         <div className='outer-div'>
         <div className='first-quiz'>
         <button disabled={disable} className='start-quize-one' onClick={redirectToQuizPage}>Start Quiz</button>
         </div>
         <div className='second-quiz'>
         <button disabled={disable} className='start-quize-one'>Start Quiz</button>
+        </div>
         </div>
         </div>
     </>

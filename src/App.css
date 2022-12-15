@@ -6,6 +6,26 @@
   height: 40vmin;
   pointer-events: none;
 }
+@keyframes dashboardBg {
+  0% {
+    background-color: #f0f4c3;
+  }
+  20% {
+    background-color: aquamarine;
+  }
+  40% {
+    background-color: aliceblue;
+  }
+  60% {
+    background-color: azure;
+  }
+  80% {
+    background-color: antiquewhite;
+  }
+  100% {
+    background-color:darksalmon
+  }
+}
 
 @keyframes changeBg {
   0% {

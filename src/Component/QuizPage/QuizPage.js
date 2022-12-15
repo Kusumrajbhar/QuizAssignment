@@ -55,16 +55,21 @@ function QuizPage() {
         break;
         case ">>" : return first >> second;
         break;
+        case "**" : return first ** second;
+        break;
       } 
     }
 
     
     function nextQuestion(){
     if(nextButton == "Next") {
-         const result =Math.ceil(operatorFunction(firstDigit, secondDigit, operator));
-         result && userAnswer && (result == userAnswer) &&  scoreDispatch({type: "score"});  
+      const result =Math.ceil(operatorFunction(firstDigit, secondDigit, operator));
+      result && userAnswer && (result == userAnswer) &&  scoreDispatch({type: "score"});  
+      console.log('userAnswer', userAnswer);
+      console.log('result', result);
          setUserAnswer('');
          setQuestionNumber(questionNumber + 1);
+         
     } else 
     if(nextButton == "Finish") {
       navigate("/Thank-You")
